@@ -1,0 +1,287 @@
+body {
+  margin: auto;
+}
+
+.jumbotron {
+  padding: 3rem 2rem;
+  background-color: var(--bs-light);
+  border-radius: 0.3rem;
+  max-width: 85%;
+  margin: 0 auto;
+}
+
+/*Navbar  */
+.navbar-bg {
+  background-color: #83a4c4;
+  padding-top: 0%;
+  padding-bottom: 0%;
+  margin-top: -20px;
+}
+
+.logo {
+  padding-top: 0%;
+  padding-bottom: 0%;
+  margin-bottom: -8px;
+  margin-left: -30px;
+}
+
+.logohome {
+  margin-bottom: -8px;
+  margin-top: -3px;
+  margin-left: -10px;
+}
+
+body.sb-main-padded.sb-show-main,
+.nav.logohome.px-5.navbar.navbar-expand-lg.navbar-light.breadcrumb-item,
+.div.navbar-bg.mt-2.container-fluid {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+/* .navbar {
+  padding-left: 10px;
+} */
+
+.nav-link,
+.navbar-nav {
+  color: white !important;
+}
+
+.navbar-link,
+.navbar-link:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown-toggle.nav-link {
+  margin-right: 50px;
+  margin-left: 10px;
+}
+.a.dropdown-item {
+  margin: 0 auto;
+}
+
+.text {
+  font-size: 80px;
+  font-weight: 400;
+}
+
+/*AirlineView   */
+.container {
+  columns: 2 auto;
+}
+
+a.view.btn {
+  padding: 5px;
+}
+
+a.view:hover {
+  background-color: #83a4c4;
+}
+.view {
+  padding-left: 5px;
+  padding-top: 5px;
+}
+
+.iconview {
+  margin-right: 5px;
+}
+
+.btn-container {
+  columns: 1 auto;
+}
+
+.td.col {
+  margin-left: 50px;
+}
+
+/*BIDTYPES*/
+/* 
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: center;
+  font-size: 15px;
+} */
+
+.flex-table {
+  min-width: 800px;
+}
+
+.flex-row {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.flex-column {
+  width: calc(100% / 6);
+  text-align: center;
+  padding: 1px;
+}
+
+.delete,
+.period,
+.retry,
+.import {
+  width: 155px;
+  font-size: 14px;
+}
+
+.stripe {
+  background-color: #eceff3;
+}
+/* 
+div.grid-container  */
+hr {
+  width: 100%;
+}
+
+.color {
+  background-color: lightyellow;
+}
+
+/* PILOT */
+
+.card {
+  max-width: 335px;
+  max-height: auto;
+  /* margin-right: 20px; */
+}
+
+.photo {
+  width: 70%;
+  height: auto;
+  margin-left: 15px;
+  margin-top: 25px;
+}
+
+.pilotTag {
+  font-size: 14px;
+  margin-left: 15px;
+}
+
+.pilotTag,
+.pilotName,
+.compName {
+  font-weight: 700;
+}
+
+.pilotName {
+  font-size: 20px;
+}
+
+.compName {
+  font-size: 16px;
+}
+
+.mapIcon {
+  font-size: 11.5px;
+}
+
+.address {
+  margin-top: -5px;
+}
+
+.compAdd,
+.phoneNum {
+  margin-top: -10px;
+  font-size: 15px;
+}
+
+.container-pilots {
+  display: flex;
+  flex-flow: row wrap;
+
+  /* margin-left: 50px; */
+  /* margin-right: 85px; */
+  padding: 10px;
+  /* padding-right: 15px; */
+  /* grid-template-columns: repeat(3, 1fr); */
+  background-color: #eef2f5;
+  padding-top: 20px;
+  /* padding-bottom: 30px; */
+  justify-content: space-around;
+  column-gap: 40px;
+}
+
+.hidden {
+  display: none;
+}
+
+.breadcrumb-item > a {
+  color: lightslategrey;
+}
+
+.active {
+  font-weight: 700;
+}
+
+/* .pilot {
+  background-color: #eef2f5;
+} */
+
+.card-page {
+  justify-content: space-evenly;
+
+  /* column-gap: 30px; */
+}
+
+/* FORM */
+
+.card-form {
+  max-width: 70%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+input.form-control {
+  margin-bottom: 10px;
+}
+
+/* h4.card-header {
+  background-color: #eef2f5;
+  padding: 12px;
+} */
+
+/* .add-form {
+  width: 500px;
+} */
+
+/* label {
+  margin-top: 10px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.form-control,
+.add-form {
+  width: 325px;
+} */
+
+/* .addButton {
+  border: solid #83a4c4;
+  background-color: #83a4c4;
+  padding: 8px;
+  width: 200px;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  border-radius: 10%;
+} */
+
+.add {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 50px;
+}
+
+/* .btn-color {
+  background-color: #83a4c4;
+} */
+
+/*UPS */
+
+.bottom {
+  margin-bottom: 150px;
+}
