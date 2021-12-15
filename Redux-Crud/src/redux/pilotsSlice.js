@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// import { act } from "react-test-renderer";
-
 const initialState = {
   pilots: [
     {
@@ -372,16 +370,6 @@ export const pilotsSlice = createSlice({
   name: "pilots",
   initialState,
   reducers: {
-    // addPilot(state, action) => {
-    //   return {
-    //     ...state,
-    //     pilots: [...state.pilots, action.payload]
-    //   }
-    // },
-
-    // updatePilot(state, action) {
-    //   state.pilots = action.payload;
-    // },
     deletePilot: (state, action) => {
       const filteredPilots = state.pilots.filter(
         (pilot) => pilot.id !== action.payload.id
@@ -402,57 +390,10 @@ export const pilotsSlice = createSlice({
       };
     },
 
-    // editPilot: (state, action) => {
-    //   state.pilots = action.payload;
-    // const {
-    //   id,
-    //   airline,
-    //   firstName,
-    //   lastName,
-    //   fleet,
-    //   photo,
-    //   seat,
-    //   company,
-    //   domicile,
-    //   trainingFacility,
-    //   address1,
-    //   address2,
-    //   city,
-    //   state,
-    //   postalCode,
-    //   areaCode,
-    //   prefix,
-    //   suffix,
-    // } = action.payload;
-
-    //   state.pilots = state.pilots.map((pilot) =>
-    //     pilot.id === action.payload.id
-    //       ? {
-    //           ...state,
-    //         }
-    //       : pilot
-    //   );
-    // },
-
-    // editPilot: (state, action) => {
-    //   //find the pilot to replace
-    //   //replace the pilot
-    //   //return the new array
-    //   const index = state.pilots.filter(
-    //     (pilot) => pilot.id === action.payload.id
-    //   );
-
-    //   state.pilots[index] = {
-    //     ...state.pilot.pilots[index],
-    //     // pilots: [...state.pilots, action.payload],
-    //   };
-    // },
-
     updatePilot(state, action) {
       const {
         id,
-        // airline,
-        // photo,
+
         firstName,
         lastName,
         fleet,
@@ -464,11 +405,9 @@ export const pilotsSlice = createSlice({
         address2,
       } = action.payload;
       const findPilot = state.pilots.find((pilot) => pilot.id === id);
-      // const existingPilot = state.pilots.find(pilot => pilot.id === id)
+
       if (findPilot) {
-        // existingPilot.id = id
-        // existingPilot.airline = airline
-        // existingPilot.photo = photo;
+        findPilot.id = id;
         findPilot.firstName = firstName;
         findPilot.lastName = lastName;
         findPilot.fleet = fleet;
@@ -484,7 +423,5 @@ export const pilotsSlice = createSlice({
 });
 
 export const selectPilots = (state) => state.pilots.pilots;
-// export const selectTasks = (state) => state.pilots;
-// export const { pilotAdded, userUpdated } = pilotsSlice.actions;
 export const { addPilot, deletePilot, updatePilot } = pilotsSlice.actions;
 export default pilotsSlice.reducer;

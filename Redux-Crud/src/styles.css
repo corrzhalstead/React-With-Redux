@@ -45,10 +45,6 @@ body.sb-main-padded.sb-show-main,
   padding-left: 5px;
 }
 
-/* {
-  font-weight: 200;
-} */
-
 .nav-link,
 .navbar-nav {
   color: white !important;
@@ -103,13 +99,6 @@ a.view:hover {
 }
 
 /*BIDTYPES*/
-/* 
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  align-items: center;
-  font-size: 15px;
-} */
 
 .flex-table {
   min-width: 800px;
@@ -199,14 +188,11 @@ hr {
   display: flex;
   flex-flow: row wrap;
 
-  /* margin-left: 50px; */
-  /* margin-right: 85px; */
   padding: 10px;
-  /* padding-right: 15px; */
-  /* grid-template-columns: repeat(3, 1fr); */
+
   background-color: #eef2f5;
   padding-top: 20px;
-  /* padding-bottom: 30px; */
+
   justify-content: space-around;
   column-gap: 40px;
 }
@@ -223,14 +209,8 @@ hr {
   font-weight: 700;
 }
 
-/* .pilot {
-  background-color: #eef2f5;
-} */
-
 .card-page {
   justify-content: space-evenly;
-
-  /* column-gap: 30px; */
 }
 
 /* FORM */
@@ -245,36 +225,11 @@ input.form-control {
   margin-bottom: 10px;
 }
 
-/* h4.card-header {
-  background-color: #eef2f5;
-  padding: 12px;
-} */
-
-/* .add-form {
-  width: 500px;
-} */
-
-/* label {
-  margin-top: 10px;
-  font-weight: 600;
-  margin-bottom: 5px;
+.error {
+  color: red;
+  font-size: 12px;
+  padding-top: 0px;
 }
-
-.form-control,
-.add-form {
-  width: 325px;
-} */
-
-/* .addButton {
-  border: solid #83a4c4;
-  background-color: #83a4c4;
-  padding: 8px;
-  width: 200px;
-  text-decoration: none;
-  color: white;
-  font-weight: 600;
-  border-radius: 10%;
-} */
 
 .add {
   display: flex;
@@ -282,12 +237,12 @@ input.form-control {
   margin-left: 50px;
 }
 
-/* .btn-color {
-  background-color: #83a4c4;
-} */
-
 /*UPS */
 
 .bottom {
   margin-bottom: 150px;
+}
+
+.edit {
+  width: 72px;
 }

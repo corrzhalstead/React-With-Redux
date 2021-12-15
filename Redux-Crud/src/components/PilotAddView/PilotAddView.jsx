@@ -3,62 +3,89 @@ import genPhoto from "../../../public/images/gen-photo.png";
 
 export const PilotAddView = ({
   airline,
-
   company,
   onSavePilot,
   addCloseButtonCLicked,
 }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-
   const [seat, setSeat] = useState("");
-  const [fleet, setFleet] = useState();
+  const [fleet, setFleet] = useState("");
   const [domicile, setDomicile] = useState("");
   const [trainingFacility, setTrainingFacility] = useState("");
-
-  // const [company, setCompany] = useState(company);
   const [address1, setAddress1] = useState("");
   const [address2, setAddress2] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
-  const [postalCode, setPostalCode] = useState();
-  const [areaCode, setAreaCode] = useState();
-  const [prefix, setPrefix] = useState();
-  const [suffix, setSuffix] = useState();
+  const [postalCode, setPostalCode] = useState("");
+  const [areaCode, setAreaCode] = useState("");
+  const [prefix, setPrefix] = useState("");
+  const [suffix, setSuffix] = useState("");
+  const [error, setError] = useState("");
 
   const saveButtonClick = (e) => {
     e.preventDefault();
-    //Error Checking
-    onSavePilot({
-      id: 100,
-      airline,
-      // airline: "AA",
-      photo: genPhoto,
+    let errorCheck = false;
 
-      firstName,
-      lastName,
+    if (
+      firstName.length < 1 ||
+      lastName.length < 1 ||
+      fleet.length < 1 ||
+      seat.length < 1 ||
+      domicile.length < 1 ||
+      address1.length < 1 ||
+      address2.length < 1 ||
+      city.length < 1 ||
+      state.length < 1 ||
+      postalCode.length < 1 ||
+      areaCode.length < 1 ||
+      prefix.length < 1 ||
+      suffix.length < 1
+    ) {
+      setError("Please fill out this field.");
+      errorCheck = false;
+    } else {
+      errorCheck === true;
 
-      fleet,
-      seat,
-      domicile,
-      trainingFacility,
-      company,
-      address1,
-      address2,
-      city,
-      state,
-      postalCode,
-      areaCode,
-      prefix,
-      suffix,
-    });
-    addCloseButtonCLicked();
-    // history.goBack();
+      onSavePilot({
+        id: 100,
+        airline,
+        photo: genPhoto,
+        firstName,
+        lastName,
+        fleet,
+        seat,
+        domicile,
+        trainingFacility,
+        company,
+        address1,
+        address2,
+        city,
+        state,
+        postalCode,
+        areaCode,
+        prefix,
+        suffix,
+      });
+      addCloseButtonCLicked();
+      setFirstName("");
+      setLastName("");
+      setSeat("");
+      setFleet("");
+      setDomicile("");
+      setTrainingFacility("");
+      setAddress1("");
+      setAddress2("");
+      setCity("");
+      setState("");
+      setPostalCode("");
+      setAreaCode("");
+      setPrefix("");
+      setSuffix("");
+      setError("");
+    }
   };
 
-  // const addCloseButtonCLicked = () => {
-  //   setIsAdding(!isAdding);
-  // };
   return (
     <>
       <div className="card-form border-0 shadow">
@@ -69,12 +96,7 @@ export const PilotAddView = ({
               <input type="hidden" value={airline} />
             </div>
             <div className="form-group">
-              <input
-                type="hidden"
-                // className="form-control"
-                value={company}
-                // onChange={(e) => setCompany(e.target.value)}
-              />
+              <input type="hidden" value={company} />
             </div>
 
             <div>
@@ -83,7 +105,6 @@ export const PilotAddView = ({
                 alt="Pilot"
                 className="photo rounded-circle"
                 hidden
-                // onChange={(e) => setPhoto(e.target.value)}
               />
             </div>
             <div className="form-group">
@@ -95,7 +116,7 @@ export const PilotAddView = ({
                 onChange={(e) => setFirstName(e.target.value)}
                 required
               />
-              {console.log(firstName, lastName)}
+              <span className="error">{error}</span>
             </div>
             <div className="form-group">
               <input
@@ -107,7 +128,8 @@ export const PilotAddView = ({
                 required
               />
             </div>
-            {console.log("onSavePilot: ", onSavePilot)}
+            <span className="error">{error}</span>
+
             <div className="form-group">
               <input
                 type="text"
@@ -118,6 +140,7 @@ export const PilotAddView = ({
                 required
               />
             </div>
+            <span className="error">{error}</span>
             <div className="form-group">
               <input
                 type="text"
@@ -129,6 +152,7 @@ export const PilotAddView = ({
               />
             </div>
 
+            <span className="error">{error}</span>
             <div className="form-group">
               <input
                 type="text"
@@ -138,6 +162,7 @@ export const PilotAddView = ({
                 onChange={(e) => setDomicile(e.target.value)}
                 required
               />
+              <span className="error ">{error}</span>
             </div>
             <div className="form-group">
               <input
@@ -148,6 +173,7 @@ export const PilotAddView = ({
                 onChange={(e) => setTrainingFacility(e.target.value)}
                 required
               />
+              <span className="error">{error}</span>
             </div>
             <div className="form-group">
               <input
@@ -158,6 +184,7 @@ export const PilotAddView = ({
                 onChange={(e) => setAddress1(e.target.value)}
                 required
               />
+              <span className="error ">{error}</span>
             </div>
             <div className="form-group">
               <input
@@ -177,6 +204,7 @@ export const PilotAddView = ({
                 onChange={(e) => setCity(e.target.value)}
                 required
               />
+              <span className="error ">{error}</span>
             </div>
             <div className="form-group">
               <input
@@ -187,6 +215,7 @@ export const PilotAddView = ({
                 onChange={(e) => setState(e.target.value)}
                 required
               />
+              <span className="error ">{error}</span>
             </div>
             <div className="form-group">
               <input
@@ -197,6 +226,7 @@ export const PilotAddView = ({
                 onChange={(e) => setPostalCode(e.target.value)}
                 required
               />
+              <span className="error ">{error}</span>
             </div>
             <div className="form-group">
               <input
@@ -207,6 +237,7 @@ export const PilotAddView = ({
                 onChange={(e) => setAreaCode(e.target.value)}
                 required
               />
+              <span className="error ">{error}</span>
             </div>
             <div className="form-group">
               <input
@@ -217,6 +248,7 @@ export const PilotAddView = ({
                 onChange={(e) => setPrefix(e.target.value)}
                 required
               />
+              <span className="error ">{error}</span>
             </div>
             <div className="form-group">
               <input
@@ -227,25 +259,11 @@ export const PilotAddView = ({
                 onChange={(e) => setSuffix(e.target.value)}
                 required
               />
+              <span className="error ">{error}</span>
             </div>
-            {/* <div> */}
-            <button
-              className="btn btn-primary"
-              // type="submit"
-              onClick={saveButtonClick}
-            >
-              Save
-            </button>
-            {/* </div> */}
-            {/* <button
-                className={`btn ${isAdding ? "btn-danger" : "btn-primary"}`}
-                onClick={addCloseButtonCLicked}
-              >
-                {isAdding ? "Cancel" : "Add Pilot"}
-              </button> */}
 
-            <button className="btn btn-primary ms-3" type="submit">
-              Cancel
+            <button className="btn btn-primary" onClick={saveButtonClick}>
+              Save
             </button>
           </form>
         </div>
@@ -255,21 +273,3 @@ export const PilotAddView = ({
 };
 
 export default PilotAddView;
-
-// FormView.propTypes = {
-//   firstName: PropTypes.string.isRequired,
-//   lastName: PropTypes.string.isRequired,
-//   fleet: PropTypes.string.isRequired,
-//   seat: PropTypes.number.isRequired,
-//   domicile: PropTypes.string.isRequired,
-//   facility: PropTypes.string.isRequired,
-//   address1: PropTypes.string.isRequired,
-//   address2: PropTypes.string,
-//   city: PropTypes.string.isRequired,
-//   state: PropTypes.string.isRequired,
-//   postalCode: PropTypes.number.isRequired,
-//   areaCode: PropTypes.number.isRequired,
-//   prefix: PropTypes.number.isRequired,
-//   suffix: PropTypes.number.isRequired,
-
-// }

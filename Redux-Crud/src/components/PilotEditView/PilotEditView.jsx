@@ -3,8 +3,7 @@ import { useSelector } from "react-redux";
 import genPhoto from "../../../public/images/gen-photo.png";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { selectPilots, updatePilot } from "../../redux/pilotsSlice";
-// import PropTypes from "prop-types";
+import { updatePilot } from "../../redux/pilotsSlice";
 
 export const PilotEditView = ({ airline }) => {
   const history = useHistory();
@@ -14,11 +13,6 @@ export const PilotEditView = ({ airline }) => {
     state.pilots.pilots.find((pilot) => pilot.id == id)
   );
 
-  // const findPilots = useSelector(selectPilots)
-  //  if (findPilots && findPilots.length > 0) {
-  //    pilot = findPilots.find((pilot) => pilot. === airline);
-  //  }
-
   const [firstName, setFirstName] = useState(pilot.firstName);
   const [lastName, setLastName] = useState(pilot.lastName);
   const [seat, setSeat] = useState(pilot.seat);
@@ -27,7 +21,6 @@ export const PilotEditView = ({ airline }) => {
   const [trainingFacility, setTrainingFacility] = useState(
     pilot.trainingFacility
   );
-  // const [photo, setPhoto] = useState("");
   const [company, setCompany] = useState(pilot.company);
   const [city, setCity] = useState(pilot.city);
   const [state, setState] = useState(pilot.state);
@@ -37,35 +30,58 @@ export const PilotEditView = ({ airline }) => {
   const [areaCode, setAreaCode] = useState(pilot.areaCode);
   const [prefix, setPrefix] = useState(pilot.prefix);
   const [suffix, setSuffix] = useState(pilot.suffix);
+  const [error, setError] = useState("");
 
   const updateButtonClicked = (e) => {
     e.preventDefault();
-    //Error Checking
-    if (firstName && lastName) {
-      // alert(`Update button clicked for id ${pilot.id}`);
-      dispatch(
-        updatePilot({
-          id: pilot.id,
-          airline,
-          firstName: firstName,
-          lastName: lastName,
-          photo: genPhoto,
-          fleet: fleet,
-          seat: seat,
-          domicile: domicile,
-          trainingFacility: trainingFacility,
-          company: company,
-          address1: address1,
-          address2: address2,
-          city: city,
-          state: state,
-          postalCode: postalCode,
-          areaCode: areaCode,
-          prefix: prefix,
-          suffix: suffix,
-        })
-      );
-      history.goBack();
+
+    let errorCheck = false;
+
+    if (
+      firstName.length < 1 ||
+      lastName.length < 1 ||
+      fleet.length < 1 ||
+      seat.length < 1 ||
+      domicile.length < 1 ||
+      address1.length < 1 ||
+      address2.length < 1 ||
+      city.length < 1 ||
+      state.length < 1 ||
+      postalCode.length < 1 ||
+      areaCode.length < 1 ||
+      prefix.length < 1 ||
+      suffix.length < 1
+    ) {
+      setError("Please fill out this field.");
+      errorCheck = false;
+    } else {
+      errorCheck === true;
+
+      if (firstName && lastName) {
+        dispatch(
+          updatePilot({
+            id: pilot.id,
+            airline,
+            firstName: firstName,
+            lastName: lastName,
+            photo: genPhoto,
+            fleet: fleet,
+            seat: seat,
+            domicile: domicile,
+            trainingFacility: trainingFacility,
+            company: company,
+            address1: address1,
+            address2: address2,
+            city: city,
+            state: state,
+            postalCode: postalCode,
+            areaCode: areaCode,
+            prefix: prefix,
+            suffix: suffix,
+          })
+        );
+        history.goBack();
+      }
     }
   };
 
@@ -81,19 +97,17 @@ export const PilotEditView = ({ airline }) => {
             <div className="form-group">
               <input
                 type="hidden"
-                // className="form-control"
                 value={company}
                 onChange={(e) => setCompany(e.target.value)}
               />
             </div>
-            {console.log(firstName, lastName, seat)}
+
             <div>
               <img
                 src={genPhoto}
                 alt="Pilot"
                 className="photo rounded-circle"
                 hidden
-                // onChange={(e) => setPhoto(e.target.value)}
               />
             </div>
             <div className="form-group">
@@ -105,7 +119,7 @@ export const PilotEditView = ({ airline }) => {
                 onChange={(e) => setFirstName(e.target.value)}
                 required
               />
-              {/* {console.log(firstName, lastName)} */}
+              <span className="error">{error}</span>
             </div>
             <div className="form-group">
               <input
@@ -116,6 +130,7 @@ export const PilotEditView = ({ airline }) => {
                 onChange={(e) => setLastName(e.target.value)}
                 required
               />
+              <span className="error">{error}</span>
             </div>
 
             <div className="form-group">
@@ -127,6 +142,7 @@ export const PilotEditView = ({ airline }) => {
                 onChange={(e) => setSeat(e.target.value)}
                 required
               />
+              <span className="error">{error}</span>
             </div>
             <div className="form-group">
               <input
@@ -137,6 +153,7 @@ export const PilotEditView = ({ airline }) => {
                 onChange={(e) => setFleet(e.target.value)}
                 required
               />
+              <span className="error">{error}</span>
             </div>
 
             <div className="form-group">
@@ -148,6 +165,7 @@ export const PilotEditView = ({ airline }) => {
                 onChange={(e) => setDomicile(e.target.value)}
                 required
               />
+              <span className="error">{error}</span>
             </div>
             <div className="form-group">
               <input
@@ -158,6 +176,7 @@ export const PilotEditView = ({ airline }) => {
                 onChange={(e) => setTrainingFacility(e.target.value)}
                 required
               />
+              <span className="error">{error}</span>
             </div>
             <div className="form-group">
               <input
@@ -168,6 +187,7 @@ export const PilotEditView = ({ airline }) => {
                 onChange={(e) => setAddress1(e.target.value)}
                 required
               />
+              <span className="error">{error}</span>
             </div>
             <div className="form-group">
               <input
@@ -187,6 +207,7 @@ export const PilotEditView = ({ airline }) => {
                 onChange={(e) => setCity(e.target.value)}
                 required
               />
+              <span className="error">{error}</span>
             </div>
             <div className="form-group">
               <input
@@ -197,6 +218,7 @@ export const PilotEditView = ({ airline }) => {
                 onChange={(e) => setState(e.target.value)}
                 required
               />
+              <span className="error">{error}</span>
             </div>
             <div className="form-group">
               <input
@@ -207,6 +229,7 @@ export const PilotEditView = ({ airline }) => {
                 onChange={(e) => setPostalCode(e.target.value)}
                 required
               />
+              <span className="error">{error}</span>
             </div>
             <div className="form-group">
               <input
@@ -217,6 +240,7 @@ export const PilotEditView = ({ airline }) => {
                 onChange={(e) => setAreaCode(e.target.value)}
                 required
               />
+              <span className="error">{error}</span>
             </div>
             <div className="form-group">
               <input
@@ -227,6 +251,7 @@ export const PilotEditView = ({ airline }) => {
                 onChange={(e) => setPrefix(e.target.value)}
                 required
               />
+              <span className="error">{error}</span>
             </div>
             <div className="form-group">
               <input
@@ -237,13 +262,10 @@ export const PilotEditView = ({ airline }) => {
                 onChange={(e) => setSuffix(e.target.value)}
                 required
               />
+              <span className="error">{error}</span>
             </div>
-            {/* <div> */}
-            <button
-              className="btn btn-primary"
-              // type="submit"
-              onClick={updateButtonClicked}
-            >
+
+            <button className="btn btn-primary" onClick={updateButtonClicked}>
               Save
             </button>
 
@@ -258,21 +280,3 @@ export const PilotEditView = ({ airline }) => {
 };
 
 export default PilotEditView;
-
-// FormView.propTypes = {
-//   firstName: PropTypes.string.isRequired,
-//   lastName: PropTypes.string.isRequired,
-//   fleet: PropTypes.string.isRequired,
-//   seat: PropTypes.number.isRequired,
-//   domicile: PropTypes.string.isRequired,
-//   facility: PropTypes.string.isRequired,
-//   address1: PropTypes.string.isRequired,
-//   address2: PropTypes.string,
-//   city: PropTypes.string.isRequired,
-//   state: PropTypes.string.isRequired,
-//   postalCode: PropTypes.number.isRequired,
-//   areaCode: PropTypes.number.isRequired,
-//   prefix: PropTypes.number.isRequired,
-//   suffix: PropTypes.number.isRequired,
-
-// }

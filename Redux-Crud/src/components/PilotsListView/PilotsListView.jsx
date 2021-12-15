@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
-// import genPhoto from "../../../public/images/gen-photo.png";
 import PropTypes from "prop-types";
 import PilotView from "../PilotView/index";
 import PilotAddView from "../PilotAddView/index";
-
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
@@ -12,29 +10,20 @@ import {
   selectPilots,
   deletePilot,
   addPilot,
-  // editPilot,
+  updatePilot,
 } from "../../redux/pilotsSlice";
 
 export const PilotsListView = ({ airline, pilots }) => {
-  // const pilots = useSelector((state) => state.pilots);
   const storedPilots = useSelector(selectPilots);
-  // const storedCompany = useSelector(selectPilots);
 
   if (storedPilots && storedPilots.length > 0) {
     pilots = storedPilots.filter((pilot) => pilot.airline === airline);
   }
 
-  // if (storedPilots && storedPilots.length > 0) {
-  //   pilots = storedCompany.filter(
-  //     // (pilot) => pilot.airline === airline,
-  //     (pilot) => pilot.company === company
-  //   );
-  // }
-
   const dispatch = useDispatch();
   const events = {
     onDeletePilot: (pilot) => dispatch(deletePilot(pilot)),
-    // onEditPilot: (pilot) => dispatch(editPilot(pilot)),
+    onUpdatePilot: (pilot) => dispatch(updatePilot(pilot)),
   };
 
   const saveEvent = {
@@ -101,8 +90,6 @@ export const PilotsListView = ({ airline, pilots }) => {
               airline={airline}
               addCloseButtonCLicked={addCloseButtonCLicked}
               company={pilots && pilots[0].company}
-              // isAdding={isAdding}
-              // photo={genPhoto}
               {...saveEvent}
             />
           </div>

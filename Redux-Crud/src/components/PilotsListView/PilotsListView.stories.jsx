@@ -1,8 +1,6 @@
 import React from "react";
 import { PilotsListView } from "./PilotsListView";
-
 import { Provider } from "react-redux";
-// import { action } from "@storybook/addon-actions";
 
 // Mock up redux store
 const store = {
@@ -12,13 +10,11 @@ const store = {
     };
   },
   subscribe: () => 0, //ignore
-  // dispatch: action("dispatch"),
 };
 
 export default {
   title: "Pilot Components /PilotsListView",
   component: PilotsListView,
-  // decorators: [(story) => <Provider store={store}>{story()}</Provider>],
 };
 
 const Template = (args) => (

@@ -24,9 +24,6 @@ const App = () => {
         <Route path="/frontier-airlines/pilots" component={FAPilotsPage} />
         <Route path="/ups/pilots" component={UPSPilotsPage} />
         <Route exact path="/edit/pilot/:id" component={PilotEditView} />
-        {/* <Route path="/edit/pilot">
-          <PilotEditView />
-        </Route> */}
       </Switch>
       <Footer />
     </Router>
